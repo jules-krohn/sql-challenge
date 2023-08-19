@@ -39,14 +39,15 @@ where first_name = 'Hercules' and last_name like 'B%';
 
 --List each employee in the Sales department, including their employee number, 
 --last name, and first name.
-select * from departments 
 
+-- select and join data from appropriate tables
 select e.emp_no, e.last_name, e.first_name, departments.dept_name
 from employees e
 join dept_emp d on
 e.emp_no=d.emp_no
 join departments on
 d.dept_no=departments.dept_no
+-- d007 is the sales department id 
 where d.dept_no = 'd007'
 
 --List each employee in the Sales and Development departments, including their employee number, 
@@ -57,7 +58,6 @@ join dept_emp d on
 e.emp_no=d.emp_no
 join departments on
 d.dept_no=departments.dept_no
-
 where d.dept_no = 'd007' or d.dept_no = 'd005'
 
 --List the frequency counts, in descending order,
