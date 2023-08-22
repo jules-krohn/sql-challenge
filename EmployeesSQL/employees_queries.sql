@@ -2,7 +2,7 @@
 select e.emp_no, e.last_name, e.first_name, e.sex, s.salary
 from employees e
 join salaries s on
-employees.emp_no=salaries.emp_no
+e.emp_no=s.emp_no
 
 --List the first name, last name, and hire date for the employees who were hired in 1986.
 select  e.first_name, e.last_name, e.hire_date
@@ -11,8 +11,7 @@ where hire_date between '1986-01-01' and '1986-12-31'
 
 -- List the manager of each department along with their department number, 
 --department name, employee number, last name, and first name.
-
-select dept_manager.dept_no, departments.dept_name, e.emp_no, e.first_name, e.last_name,  
+select e.first_name, e.last_name, dept_manager.dept_no, departments.dept_name, e.emp_title_id 
 from employees e
 join dept_manager on
 e.emp_no=dept_manager.emp_no
@@ -39,7 +38,6 @@ where first_name = 'Hercules' and last_name like 'B%';
 
 --List each employee in the Sales department, including their employee number, 
 --last name, and first name.
-select * from departments 
 
 select e.emp_no, e.last_name, e.first_name, departments.dept_name
 from employees e
@@ -57,7 +55,6 @@ join dept_emp d on
 e.emp_no=d.emp_no
 join departments on
 d.dept_no=departments.dept_no
-
 where d.dept_no = 'd007' or d.dept_no = 'd005'
 
 --List the frequency counts, in descending order,
